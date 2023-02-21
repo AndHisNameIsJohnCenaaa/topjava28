@@ -50,7 +50,7 @@ public class MealTestData {
             LocalDateTime.of(2004, 10, 19, 10, 23, 54), "ужин", 501);
 
     public static Meal getNew() {
-        return new Meal(LocalDateTime.of(2004, 10, 19, 10, 23, 54), "new meal", 500);
+        return new Meal(LocalDateTime.of(2010, 10, 19, 10, 23, 54), "new meal", 500);
     }
 
     /** for MEAL_ID1 **/
