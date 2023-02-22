@@ -31,23 +31,23 @@ public class MealTestData {
     public static final Meal userMeal3 = new Meal(USER_MEAL_ID3,
             LocalDateTime.of(2004, 10, 19, 19, 34, 1), "ужин", 499);
     public static final Meal userMeal4 = new Meal(USER_MEAL_ID4,
-            LocalDateTime.of(2004, 10, 19, 9, 23, 54), "завтрак", 1000);
+            LocalDateTime.of(2004, 10, 20, 9, 23, 54), "завтрак", 1000);
     public static final Meal userMeal5 = new Meal(USER_MEAL_ID5,
-            LocalDateTime.of(2004, 10, 19, 13, 23, 54), "обед", 501);
+            LocalDateTime.of(2004, 10, 20, 13, 23, 54), "обед", 501);
     public static final Meal userMeal6 = new Meal(USER_MEAL_ID6,
-            LocalDateTime.of(2004, 10, 19, 20, 23, 54), "ужин", 600);
+            LocalDateTime.of(2004, 10, 20, 20, 23, 54), "ужин", 600);
     public static final Meal adminMeal1 = new Meal(ADMIN_MEAL_ID1,
             LocalDateTime.of(2004, 10, 19, 10, 23, 54), "завтрак", 1000);
     public static final Meal adminMeal2 = new Meal(ADMIN_MEAL_ID2,
             LocalDateTime.of(2004, 10, 19, 14, 13, 10), "обед", 500);
     public static final Meal adminMeal3 = new Meal(ADMIN_MEAL_ID3,
-            LocalDateTime.of(2004, 10, 19, 10, 23, 54), "ужин", 500);
+            LocalDateTime.of(2004, 10, 19, 19, 34, 1), "ужин", 500);
     public static final Meal guestMeal1 = new Meal(GUEST_MEAL_ID1,
             LocalDateTime.of(2004, 10, 19, 10, 23, 54), "завтрак", 1000);
     public static final Meal guestMeal2 = new Meal(GUEST_MEAL_ID2,
-            LocalDateTime.of(2004, 10, 19, 10, 23, 54), "обед", 500);
+            LocalDateTime.of(2004, 10, 19, 14, 13, 10), "обед", 500);
     public static final Meal guestMeal3 = new Meal(GUEST_MEAL_ID3,
-            LocalDateTime.of(2004, 10, 19, 10, 23, 54), "ужин", 501);
+            LocalDateTime.of(2004, 10, 19, 19, 34, 1), "ужин", 501);
 
     public static Meal getNew() {
         return new Meal(LocalDateTime.of(2010, 10, 19, 10, 23, 54), "new meal", 500);

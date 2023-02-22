@@ -92,6 +92,7 @@ public class MealServiceTest {
         assertMatch(service.get(updated.getId(), USER_ID), updated);
     }
 
+    /** for user meal **/
     @Test
     public void create() {
         Meal created = service.create(MealTestData.getNew(), USER_ID);
@@ -102,6 +103,7 @@ public class MealServiceTest {
         assertMatch(service.get(newId, USER_ID), newMeal);
     }
 
+    /** for user **/
     @Test
     public void duplicateDateTimeCreate() {
         assertThrows(DataAccessException.class, () -> service.create(getDateTimeDuplicated(), USER_ID));
