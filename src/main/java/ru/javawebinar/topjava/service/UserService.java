@@ -4,6 +4,7 @@ import org.hibernate.Hibernate;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import ru.javawebinar.topjava.model.User;
@@ -54,14 +55,13 @@ public class UserService {
         checkNotFoundWithId(repository.save(user), user.id());
     }
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true, propagation = Propagation.REQUIRED)
     public User getWithMealList(int id) {
         User user = repository.get(id);
         if (user == null) {
             return null;
         }
         Hibernate.initialize(user.getMealList());
-
-        return user;
+        return checkNotFoundWithId(user, user.id());
     }
 }

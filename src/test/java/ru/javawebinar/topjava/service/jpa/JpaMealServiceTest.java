@@ -7,4 +7,5 @@ import ru.javawebinar.topjava.service.AbstractMealServiceTest;
 
 @ActiveProfiles(resolver = ActiveDbProfileResolver.class, profiles = {Profiles.HSQL_DB, Profiles.JPA})
 public class JpaMealServiceTest extends AbstractMealServiceTest {
+
 }
