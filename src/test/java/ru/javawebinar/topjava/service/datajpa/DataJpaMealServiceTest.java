@@ -23,6 +23,6 @@ public class DataJpaMealServiceTest extends AbstractMealServiceTest {
         expected.setUser(UserTestData.user);
         Meal actual =  service.getWithUser(MEAL1_ID, USER_ID);
         MEAL_MATCHER.assertMatch(actual, expected);
-        USER_MATCHER.assertMatch((User) Hibernate.unproxy(actual.getUser()), expected.getUser());
+        USER_MATCHER.assertMatch(actual.getUser(), expected.getUser());
     }
 }

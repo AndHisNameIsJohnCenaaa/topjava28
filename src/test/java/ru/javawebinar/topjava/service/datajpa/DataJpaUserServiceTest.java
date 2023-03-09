@@ -1,5 +1,6 @@
 package ru.javawebinar.topjava.service.datajpa;
 
+import org.hibernate.Hibernate;
 import org.junit.Test;
 import org.springframework.test.context.ActiveProfiles;
 import ru.javawebinar.topjava.ActiveDbProfileResolver;
@@ -17,10 +18,11 @@ public class DataJpaUserServiceTest extends AbstractUserServiceTest {
     @Test
     public void getWithMealList() {
         User expected = user;
-        expected.setMealList(List.of(meal1, meal2, meal3, meal4, meal5, meal6, meal7));
+        expected.setMealList(List.of(meal7, meal6, meal5, meal4, meal3, meal2, meal1));
         expected.getMealList().forEach(meal -> meal.setUser(user));
 
         User actual = service.getWithMealList(USER_ID);
+        System.out.println(actual.getMealList().getClass());
         USER_MATCHER.assertMatch(actual, expected);
         MEAL_MATCHER.assertMatch(actual.getMealList(), expected.getMealList());
     }
