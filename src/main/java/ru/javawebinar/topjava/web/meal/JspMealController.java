@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.javawebinar.topjava.model.Meal;
@@ -11,7 +12,10 @@ import ru.javawebinar.topjava.service.MealService;
 import ru.javawebinar.topjava.util.MealsUtil;
 import ru.javawebinar.topjava.web.SecurityUtil;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.time.LocalDateTime;
 
 @Controller
 @RequestMapping("/meals")
@@ -44,11 +48,25 @@ public class JspMealController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute("meal") Meal meal) {
-        if (meal.isNew()) {
-            service.create(meal, SecurityUtil.authUserId());
-            return "redirect:/meals";
-        }
+    public String save(HttpServletRequest request) throws IOException {
+        request.setCharacterEncoding("UTF-8");
+        Meal meal = new Meal(
+                null,
+                LocalDateTime.parse(request.getParameter("dateTime")),
+                request.getParameter("description"),
+                Integer.parseInt(request.getParameter("calories")));
+        service.create(meal, SecurityUtil.authUserId());
+        return "redirect:/meals";
+    }
+
+    @PostMapping("/{id}/save")
+    public String save(HttpServletRequest request, @PathVariable("id") int id) throws IOException {
+        request.setCharacterEncoding("UTF-8");
+        Meal meal = new Meal(
+                id,
+                LocalDateTime.parse(request.getParameter("dateTime")),
+                request.getParameter("description"),
+                Integer.parseInt(request.getParameter("calories")));
         service.update(meal, SecurityUtil.authUserId());
         return "redirect:/meals";
     }
