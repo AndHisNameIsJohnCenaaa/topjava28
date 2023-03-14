@@ -9,11 +9,10 @@
 </head>
 <body>
 <section>
-    <h3><a href="index.jsp">Home</a></h3>
+    <h3><a href="/">Home</a></h3>
     <hr/>
     <h2>Meals</h2>
-    <form method="get" action="meals">
-        <input type="hidden" name="action" value="filter">
+    <form method="get" action="/meals/filter">
         <dl>
             <dt>From Date (inclusive):</dt>
             <dd><input type="date" name="startDate" value="${param.startDate}"></dd>
@@ -56,8 +55,10 @@
                 </td>
                 <td>${meal.description}</td>
                 <td>${meal.calories}</td>
-                <td><a href="meals/${meal.id}/update"><button type="submit">Update</button></a></td>
-                <td><form action="meals/${meal.id}/delete" method="post"><button type="submit">Delete</button></form></td>
+                <td><a href="/meals/${meal.id}/update"><button type="submit">Update</button></a></td>
+                <td><form action="/meals/${meal.id}/delete" method="post">
+                    <button type="submit">Delete</button></form>
+                </td>
             </tr>
         </c:forEach>
     </table>
