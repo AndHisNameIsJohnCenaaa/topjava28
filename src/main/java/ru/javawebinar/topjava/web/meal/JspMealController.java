@@ -62,7 +62,7 @@ public class JspMealController {
 
     @PostMapping("/save")
     public String create(HttpServletRequest request) throws IOException {
-//        request.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         Meal meal = new Meal(
                 null,
                 LocalDateTime.parse(request.getParameter("dateTime")),
