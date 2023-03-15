@@ -10,7 +10,10 @@ VALUES ('User', 'user@yandex.ru', 'password'),
 
 INSERT INTO user_role (role, user_id)
 VALUES ('USER', 100000),
-       ('ADMIN', 100001);
+       ('ADMIN', 100001),
+       ('USER', 100001);
+
+select * from users left join user_role ur on users.id = ur.user_id;
 
 INSERT INTO meal (date_time, description, calories, user_id)
 VALUES ('2020-01-30 10:00:00', 'Завтрак', 500, 100000),

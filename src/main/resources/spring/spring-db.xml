@@ -59,6 +59,14 @@
 
     <beans profile="jdbc">
         <context:component-scan base-package="ru.javawebinar.**.repository.jdbc"/>
+
+        <!-- Creating TransactionManager Bean, since JDBC we are creating of type
+		DataSourceTransactionManager -->
+        <bean id="transactionManager"
+              class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+            <property name="dataSource" ref="dataSource" />
+        </bean>
+
         <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
             <constructor-arg ref="dataSource"/>
         </bean>
