@@ -1,5 +1,6 @@
 package ru.javawebinar.topjava.repository.jdbc;
 
+import org.simpleflatmapper.jdbc.SqlTypeColumnProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -14,6 +15,8 @@ import ru.javawebinar.topjava.model.Role;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.UserRepository;
 
+import java.sql.Types;
+import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -28,8 +31,7 @@ public class JdbcUserRepository implements UserRepository {
     private final ResultSetExtractor<List<User>> resultSetExtractor =
             JdbcTemplateMapperFactory
                     .newInstance()
-                    .addKeys("id", "user_id")
-                    .addAliasForType(Set.class, "role", "roles")
+                    .addKeys("id")
                     .newResultSetExtractor(User.class);
 
     private static final BeanPropertyRowMapper<User> ROW_MAPPER = BeanPropertyRowMapper.newInstance(User.class);
@@ -88,7 +90,9 @@ public class JdbcUserRepository implements UserRepository {
 
     @Override
     public List<User> getAll() {
-        return jdbcTemplate.query("SELECT * FROM users LEFT OUTER JOIN user_role ur on users.id = ur.user_id ORDER BY name, email", resultSetExtractor);
+        return jdbcTemplate.query("SELECT u.id as id, u.name as name, u.calories_per_day as calories_per_day," +
+                "u.email as email, u.password as password, u.registered as registered, u.enabled as enabled," +
+                "ur.role as role" +
+                " FROM users u LEFT OUTER JOIN user_role ur on u.id = ur.user_id ORDER BY name, email", resultSetExtractor);
     }
-
 }
