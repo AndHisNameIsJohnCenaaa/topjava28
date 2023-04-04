@@ -12,24 +12,55 @@
 <div class="jumbotron pt-4">
     <div class="container">
         <h3 class="text-center"><spring:message code="meal.title"/></h3>
-        <form method="get" action="meals/filter">
+<%--        <form id="filter">--%>
+<%--            <div class="row">--%>
+<%--                <div class="col-2">--%>
+<%--                    <label for="startDate">От даты (включая)</label>--%>
+<%--                    <input class="form-control" name="startDate" id="startDate" autocomplete="off">--%>
+<%--                </div>--%>
+<%--                <div class="col-2">--%>
+<%--                    <label for="endDate">До даты (включая)</label>--%>
+<%--                    <input class="form-control" name="endDate" id="endDate" autocomplete="off">--%>
+<%--                </div>--%>
+<%--                <div class="offset-2 col-3">--%>
+<%--                    <label for="startTime">От времени (включая)</label>--%>
+<%--                    <input class="form-control" name="startTime" id="startTime" autocomplete="off">--%>
+<%--                </div>--%>
+<%--                <div class="col-3">--%>
+<%--                    <label for="endTime">До времени (исключая)</label>--%>
+<%--                    <input class="form-control" name="endTime" id="endTime" autocomplete="off">--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </form>--%>
+<%--    </div>--%>
+
+        <form id="filterForm">
             <dl>
                 <dt><spring:message code="meal.startDate"/>:</dt>
-                <dd><input type="date" name="startDate" value="${param.startDate}"></dd>
+                <dd><input class="form-control" type="date" id="startDate" name="startDate" autocomplete="off" value="${param.startDate}"></dd>
             </dl>
             <dl>
                 <dt><spring:message code="meal.endDate"/>:</dt>
-                <dd><input type="date" name="endDate" value="${param.endDate}"></dd>
+                <dd><input class="form-control" type="date" id="endDate" name="endDate" autocomplete="off" value="${param.endDate}"></dd>
             </dl>
             <dl>
                 <dt><spring:message code="meal.startTime"/>:</dt>
-                <dd><input type="time" name="startTime" value="${param.startTime}"></dd>
+                <dd><input class="form-control" type="time" id="startTime" name="startTime" autocomplete="off" value="${param.startTime}"></dd>
             </dl>
             <dl>
                 <dt><spring:message code="meal.endTime"/>:</dt>
-                <dd><input type="time" name="endTime" value="${param.endTime}"></dd>
+                <dd><input class="form-control" type="time" id="endTime" name="endTime" autocomplete="off" value="${param.endTime}"></dd>
             </dl>
-            <button type="submit"><spring:message code="meal.filter"/></button>
+            <div class="card-footer text-right">
+                <button class="btn btn-danger" onclick="filter()">
+                    <span class="fa fa-remove"></span>
+                    Отменить
+                </button>
+                <button type="button" class="btn btn-primary" onclick="filter()">
+                    <span class="fa fa-check"></span>
+                    <spring:message code="meal.filter"/>
+                </button>
+            </div>
         </form>
         <button class="btn btn-primary" onclick="add()">
             <span class="fa fa-plus"></span>

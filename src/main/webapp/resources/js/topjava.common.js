@@ -38,6 +38,23 @@ function updateTable() {
     });
 }
 
+function filter() {
+    let filterForm = $('#filterForm');
+    $.ajax({
+        url: ctx.ajaxUrl + "filter",
+        type: "GET",
+        data: {
+            startDate: filterForm.find("#startDate"),
+            endDate: filterForm.find("#endDate"),
+            startTime: filterForm.find("#startTime"),
+            endTime: filterForm.find("#endTime"),
+        }
+    }).done(function () {
+        updateTable();
+        successNoty("Filtered");
+    });
+}
+
 function save() {
     $.ajax({
         type: "POST",
