@@ -31,7 +31,6 @@ function deleteRow(id) {
         successNoty("Deleted");
     });
 }
-
 function updateTable() {
     $.get(ctx.ajaxUrl, function (data) {
         ctx.datatableApi.clear().rows.add(data).draw();
@@ -39,20 +38,19 @@ function updateTable() {
 }
 
 function filter() {
-    let filterForm = $('#filterForm');
+    form = $('#filterForm')
     $.ajax({
         url: ctx.ajaxUrl + "filter",
         type: "GET",
-        data: {
-            startDate: filterForm.find("#startDate"),
-            endDate: filterForm.find("#endDate"),
-            startTime: filterForm.find("#startTime"),
-            endTime: filterForm.find("#endTime"),
-        }
-    }).done(function () {
-        updateTable();
-        successNoty("Filtered");
+        data: form.serialize(),
+    }).done(function (data) {
+         ctx.datatableApi.clear().rows.add(data).draw();
+         successNoty("Filtered");
     });
+}
+
+function clearFilterForm(){
+
 }
 
 function save() {

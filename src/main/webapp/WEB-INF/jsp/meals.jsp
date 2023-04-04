@@ -52,9 +52,9 @@
                 <dd><input class="form-control" type="time" id="endTime" name="endTime" autocomplete="off" value="${param.endTime}"></dd>
             </dl>
             <div class="card-footer text-right">
-                <button class="btn btn-danger" onclick="filter()">
-                    <span class="fa fa-remove"></span>
-                    Отменить
+                <button type="button" class="btn btn-primary" onclick="filter()">
+                    <span class="fa fa-check"></span>
+                    <spring:message code="meal.filter"/>
                 </button>
                 <button type="button" class="btn btn-primary" onclick="filter()">
                     <span class="fa fa-check"></span>
