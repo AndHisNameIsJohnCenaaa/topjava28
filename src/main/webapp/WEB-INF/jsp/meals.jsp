@@ -37,28 +37,28 @@
         <form id="filterForm">
             <dl>
                 <dt><spring:message code="meal.startDate"/>:</dt>
-                <dd><input class="form-control" type="date" id="startDate" name="startDate" autocomplete="off" value="${param.startDate}"></dd>
+                <dd><input class="form-control" type="date" id="startDate" name="startDate" autocomplete="off"></dd>
             </dl>
             <dl>
                 <dt><spring:message code="meal.endDate"/>:</dt>
-                <dd><input class="form-control" type="date" id="endDate" name="endDate" autocomplete="off" value="${param.endDate}"></dd>
+                <dd><input class="form-control" type="date" id="endDate" name="endDate" autocomplete="off"></dd>
             </dl>
             <dl>
                 <dt><spring:message code="meal.startTime"/>:</dt>
-                <dd><input class="form-control" type="time" id="startTime" name="startTime" autocomplete="off" value="${param.startTime}"></dd>
+                <dd><input class="form-control" type="time" id="startTime" name="startTime" autocomplete="off"></dd>
             </dl>
             <dl>
                 <dt><spring:message code="meal.endTime"/>:</dt>
-                <dd><input class="form-control" type="time" id="endTime" name="endTime" autocomplete="off" value="${param.endTime}"></dd>
+                <dd><input class="form-control" type="time" id="endTime" name="endTime" autocomplete="off"></dd>
             </dl>
             <div class="card-footer text-right">
                 <button type="button" class="btn btn-primary" onclick="filter()">
                     <span class="fa fa-check"></span>
                     <spring:message code="meal.filter"/>
                 </button>
-                <button type="button" class="btn btn-primary" onclick="filter()">
+                <button type="button" class="btn btn-primary" onclick="resetFilter()">
                     <span class="fa fa-check"></span>
-                    <spring:message code="meal.filter"/>
+                    <spring:message code="common.cancel"/>
                 </button>
             </div>
         </form>

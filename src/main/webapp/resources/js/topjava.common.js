@@ -49,8 +49,10 @@ function filter() {
     });
 }
 
-function clearFilterForm(){
-
+function resetFilter(){
+    $('#filterForm')[0].reset();
+    updateTable();
+    successNoty("Canceled");
 }
 
 function save() {
