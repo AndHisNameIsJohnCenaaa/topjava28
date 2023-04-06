@@ -66,6 +66,17 @@ function save() {
         successNoty("Saved");
     });
 }
+function enable(checkBox,id) {
+    $.ajax({
+        type: "POST",
+        url: ctx.ajaxUrl + id,
+        data: {
+            enabled: !!checkBox.is(":checked")
+        }
+    }).done(function () {
+        updateTable();
+    });
+}
 
 let failedNote;
 
