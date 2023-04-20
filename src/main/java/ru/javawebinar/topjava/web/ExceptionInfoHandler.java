@@ -22,6 +22,8 @@ import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.Arrays;
+
 import static ru.javawebinar.topjava.util.exception.ErrorType.*;
 
 @RestControllerAdvice(annotations = RestController.class)
@@ -50,8 +52,9 @@ public class ExceptionInfoHandler {
 
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)  // 422
     @ExceptionHandler({BindException.class})
-    public ErrorInfo bindValidationError(HttpServletRequest req, Exception e) {
-        return logAndGetErrorInfo(req, e, false, VALIDATION_ERROR);
+    public ErrorInfo bindValidationError(HttpServletRequest req, BindException e) {
+        String[] details = e.getBindingResult().getSuppressedFields();
+        return logAndGetErrorInfo(req, details, false, VALIDATION_ERROR);
     }
 
 
@@ -69,6 +72,6 @@ public class ExceptionInfoHandler {
         } else {
             log.warn("{} at request  {}: {}", errorType, req.getRequestURL(), rootCause.toString());
         }
-        return new ErrorInfo(req.getRequestURL(), errorType, rootCause.toString());
+        return new ErrorInfo(req.getRequestURL(), errorType, new String[]{rootCause.toString()});
     }
 }
